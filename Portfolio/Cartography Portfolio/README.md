@@ -1,4 +1,4 @@
-Reflection On Cartographic Design And Analysis
+#Reflection On Cartographic Design And Analysis
 
 My path as a Computational Mathematics major at Appalachian has been very dense in courses that hold little to no focus on aesthetic qualities of the required work. Despite this, I am driven to put forth my best, most thorough work whenever possible. I seek to be thorough because I seek to understand. The making of these maps was a wonderful opportunity to learn and train a valuable new skill set in visual arts. Producing thorough work required pouring serious attention to detail into these maps (a fact better demonstrated once I surmounted the initial Illustrator-hump). It is my belief that this portfolio illustrates this care and progression of facing and eventually overcoming these new challenges.
 
