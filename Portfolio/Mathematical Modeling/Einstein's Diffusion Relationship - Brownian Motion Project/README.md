@@ -26,17 +26,11 @@ Determining the probability of *allowing* a step first requires the diffusion co
 
 The probability *p*(*x*, *t*) of a *single* particle being at a distance *x* from the origin at time *t* is then given by Einstein's diffusion equation \[3\]:
 
-$$p(x,t)= \\frac{1}{\\sqrt{4 \\pi D}} \\frac{e^{\\frac{-x^2}{4Dt}}}{\\sqrt{t}}$$
+* Please view Project_4.pdf above to view this equation. *
 
 Let an agent particle be at some location *L* = (*a*, *b*). First, the agent decides with equal probability (0.25) which direction to step. These four possible new locations are (*a* + *Δ**x*, *b*), (*a**i**Δ**x*, *b*), (*a*, *b* + *Δ**x*), and (*a*, *b* − *Δ**x*). The probability of stepping to that point is then described by the diffusion equation above. Therefore, the probability of stepping to one of these new locations at time *t* is given by:
 
-$$\\text{Stepping Left: } \\frac{0.25}{\\sqrt{4 \\pi D}} e^{-((a - \\Delta x)^2 + (b)^2) \\cdot \\frac{1}{4Dt}} \\cdot \\frac{1}{\\sqrt{t}}$$
-
-$$\\text{Stepping Right: } \\frac{0.25}{\\sqrt{4 \\pi D}} e^{-((a + \\Delta x)^2 + (b)^2) \\cdot \\frac{1}{4Dt}} \\cdot \\frac{1}{\\sqrt{t}}$$
-
-$$\\text{Stepping Up: } \\frac{0.25}{\\sqrt{4 \\pi D}} e^{-((a)^2 + (b + \\Delta x)^2) \\cdot \\frac{1}{4Dt}} \\cdot \\frac{1}{\\sqrt{t}}$$
-
-$$\\text{Stepping Down: } \\frac{0.25}{\\sqrt{4 \\pi D}} e^{-((a)^2 + (b - \\Delta x)^2) \\cdot \\frac{1}{4Dt}} \\cdot \\frac{1}{\\sqrt{t}}$$
+* Please view Project_4.pdf above to view these equations. *
 
 Several iterations of this process for every agent particle models Einstein's relationship. Realistically, for sake of experiment and implementation, the process of choosing a direction and allowing that step can easily be coded separately, as it is in the demonstration implementation of this model in Java using the Processing Java API, given in the Code Appendix. Still frames from this demonstration are given in Figures 1, 2, and 3 at the end of this document. In these frames, Hydrogen agents are red, Helium agents are blue, and Nitrogen agents are green.
 
