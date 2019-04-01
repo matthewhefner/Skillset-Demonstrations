@@ -11,13 +11,10 @@ import processing.core.*;
 public class Brownian extends PApplet {
 	// Helium Agents
 	private double[][] agentsHe;
-	private double probHe;
 	// Hydrogen Agents
 	private double[][] agentsH;
-	private double probH;
 	// Nitrogen Agents
 	private double[][] agentsN;
-	private double probN;
 	// Average distances of each type
 	private double[] avgs = new double[3];
 	// Diffusion Coefficients
@@ -35,15 +32,10 @@ public class Brownian extends PApplet {
 	private float seconds;
 
 	/**
-	 * Sets up the screen and animation, initializes particle agents and calculates
-	 * the probability of each agent stepping.
+	 * Sets up the screen and animation and initializes particle agents.
 	 */
 	public void setup() {
 		background(0);
-		// Probability of stepping for each element
-		probHe = DHe * dt / Math.pow(dX, 2);
-		probH = DH * dt / Math.pow(dX, 2);
-		probN = DN * dt / Math.pow(dX, 2);
 		// Initialize agents to origin
 		agentsHe = new double[1000][2];
 		agentsH = new double[1000][2];
@@ -70,9 +62,9 @@ public class Brownian extends PApplet {
 		// number of passed seconds
 		seconds = (float) (dt * frameCount);
 		// walk each agent
-		walk(agentsHe, probHe, 1);
-		walk(agentsH, probH, 0);
-		walk(agentsN, probN, 2);
+		walk(agentsHe, 1);
+		walk(agentsH, 0);
+		walk(agentsN, 2);
 		// draw the circles of each average radius
 		drawRadius(0);
 		drawRadius(1);
@@ -219,7 +211,7 @@ public class Brownian extends PApplet {
 	 * @param prob   The probability of that particle type stepping
 	 * @param k      The particle type
 	 */
-	public void walk(double[][] agents, double prob, int k) {
+	public void walk(double[][] agents, int k) {
 		// screen size of agent
 		strokeWeight(5);
 		noFill();
