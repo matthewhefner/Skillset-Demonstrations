@@ -1,6 +1,6 @@
 # Numerical Methods and Analysis
 
-The PDFs in this folder are brief demonstrations of fundamental algorithms and concepts within computational mathematics.
+The PDFs in this folder are brief demonstrations of fundamental algorithms and concepts within Numerical Methods.
 
 The python routines are implementations of some of these concepts.
 
