@@ -5,6 +5,8 @@ This repository contains brief examples of my work in various fields of study ov
 
 A copy of my resume is also included.
 
+Feel free to check out [my website](http://www.matthefner.com).  I wrote and maintain the HTML, CSS, JavaScript and PHP behind the site as a personal project.
+
 Cartography Portfolio
 ---------------------
 
