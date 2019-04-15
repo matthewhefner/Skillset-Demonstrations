@@ -15,11 +15,11 @@ During a semester long study of Cartographic Design and Analysis, I learned much
 Java Work
 ---------
 
-Here you will find two distinctly different entries:
+Here you will find two distinct entries:
 
--   The first is a collection of implementations of Data Structures, Algorithms, and various other fundamental theoretical Computer Science concepts.
+-   Written over the duration of a course in Data Structures, the *Data Structures* folder contains implementations, demonstrations and experiments with various data structures and algorithms.
 
--   The second is a collection of Java code written mostly with the Processing Java API. Consequently, these will generally not run as standalone programs. They are intended only as demonstrations of my code writing ability.
+-   The *Games and Fun* folder is a collection of Java code written mostly with the Processing Java API. Consequently, these will generally not run as standalone programs. They are intended only as demonstrations of my code writing ability and interest in fractals, cellular automata, and agent based modeling.  Some of the projects in this folder are still under development and are updated regularly.
 
 JavaScript Games
 ----------------

@@ -13,7 +13,7 @@ public class StringNode {
   }
 
   public void setKey(String _key) {
-    key = _key;
+    key = _key; 
   }
 
   public StringNode getNext() {

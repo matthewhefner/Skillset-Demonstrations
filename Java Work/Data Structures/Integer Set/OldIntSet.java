@@ -18,7 +18,7 @@ public class IntSet {
 		set = new int [capacity];
 	}
 	
-	/* Find if a key is present in the set. Returns -1 if the key is not present, otherwse returns the position in the set.*/
+	/* Find if a key is present in the set. Returns -1 if the key is not present, otherwise returns the position in the set.*/
 	public boolean find(int key) {
 		// binary search
 		int low = 0, high = size-1;
