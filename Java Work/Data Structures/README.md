@@ -1,4 +1,4 @@
-#Data Structures
+# Data Structures
 
 Written over the duration of a course in Data Structures, this folder contains implementations, demonstrations and experiments with various data structures and algorithms.
 
