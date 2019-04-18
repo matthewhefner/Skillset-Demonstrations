@@ -7,7 +7,7 @@ Projects selected for inclusion:
 * Fun with Hash Functions
 	* *Prog.java* seeks to compute collisions of provided hash functions in *HashFunctions.java*.
 * Fun with Hash Tables
-	* The first goal of this project were to implement a String set with a Hash Table in *StringSet.java*, the nodes of which are constructed in *StringNode.java*, and implement a Spell Checking application, using the String set and *dictionary.txt*.
+	* The first goal of this project was to implement a String set with a Hash Table in *StringSet.java*, the nodes of which are constructed in *StringNode.java*, and implement a Spell Checking application, using the String set and *dictionary.txt*.
 	* The second goal of this project was to fund the closest points within *points.txt*, all within the unit square, which is achieved in *Closest.java*.
 * Integer Set
 	* The goal of this project was to simply implement and rigorously test an integer set data structure with both underlying array and linked list implementations.
