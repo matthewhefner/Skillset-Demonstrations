@@ -1,3 +1,15 @@
+  // War.js
+  //  
+  // A Cellular Automata based War simulation game.
+  //
+  // Author: Matthew Hefner
+
+  // Version: 4-27-19
+
+  // TODO: Plans for Improvement
+  // - new colors
+  // - map options
+
 var active; //2d boolean array of iteration
 var newActive; //2d boolean array of next iteration
 var alive; //2d boolean array of iteration
@@ -10,41 +22,42 @@ var rulers; //2d int array of rulers
 var scalar; //int size of each cell when drawn to screen
 var blankArray; //for cleaning the arrays
 var water; //int array holding RGBA value of water
+var sun; //position of the sun for seasons
+var days; //in-game time for seasons
 
 function preload() {
-  img = loadImage('map.png');
+  img = loadImage('mapR.png');
   pausedMenuImg = loadImage('pausedMenu.png');
   playingMenuImg = loadImage('playingMenu.png');
-  // TODO:
-  //new colors
-  //map options
-  //resources
 }
 
 function setup() {
-    var canvas = createCanvas(960,540);
+    var canvas = createCanvas(img.width, img.height);
     //setAttributes('antialias', true);
 	paused = true;
-	scalar = 1;
-	cols = width;
-	rows = height;
+    //Scalar used for development
+	scalar = 2;
+	cols = width / scalar;
+	rows = height / scalar;
+    sun = rows / 2;
+    days = 0;
 	populateArrays();
-	background(0);
+	background('rgba(0%,20%,0%,1)');
 	image(img, 0, 0);
 	img.loadPixels();
-	//TODO: Resources
-	//water = [img.pixels[0], img.pixels[1], img.pixels[2], img.pixels[3]];
-	//print(water);
 	frameRate(500);
 }
 
 function draw() {
 	if (!paused) {
-		generation();
 		if (frameCount % 4 == 1) {
-			background('rgba(0%,0%,0%,0.01)');
+          // Creates fade effect
+			background('rgba(0%,20%,0%,0.01)');
 		}
-		image(img, 0, 0);
+		image(img, 0, 0, 0);
+		generation();
+        days += 1;
+        sun = (rows / 4) * sin( TWO_PI * day / 365) + rows / 2;
 	}
 	drawMenu();
 }
@@ -62,8 +75,11 @@ function keyPressed() {
 		pauseProcess();
 	}
 	if (keyCode == DELETE) {
-		if (confirm("Are you sure you want to clear the map?")) {
-			populateArrays();
+		for (var i = 0; i < cols; i++) {
+			for (var j = 0; j < rows; j++) {
+				fill(img.pixels[((width * j + i) * scalar)]);
+				rect(i * scalar, j * scalar, scalar, scalar);
+			}
 		}
 	}
 	return false; // prevent any default behavior
@@ -120,6 +136,8 @@ function mouseDragged() {
 				mouseHelper(col, row);
 				break;
 		}
+		delete col;
+		delete row;
 	}
 }
 
@@ -132,9 +150,6 @@ function mouseHelper(col, row) {
 }
 
 function mousePressed() {
-	let z = (rows * floor(mouseX / scalar) + floor(mouseY / scalar)) * 2 * 4;
-	print(img.width, img.height);
-	print(img.pixels[z]);
 	if ((mouseX < 224 || mouseY < 50)) {
 		if (mouseX > 8 && mouseX < 39 && mouseY > 8 && mouseY < 39) {
 			key = '1';
@@ -172,6 +187,8 @@ function mousePressed() {
 				mouseHelper(col, row);
 				break;
 		}
+		delete col;
+		delete row;
 	}
 }
 
@@ -179,21 +196,21 @@ function generation() {
 	for (var i = 0; i < cols; i++) {
 		for (var j = 0; j < rows; j++) {
 			if (active[i][j]) {
-				if ((neighbors[i][j] == 2 || neighbors[i][j] == 3) & alive[i][j]) {
+				if ((neighbors[i][j] == 2 || neighbors[i][j] == 3) && alive[i][j]) {
 					newActive[i][j] = true;
 					newAlive[i][j] = true;
 					drawRect(i, j);
-				} else if ((neighbors[i][j] == 3) & !alive[i][j]) {
+				} else if (neighbors[i][j] == 3 && !alive[i][j]) {
 					//New life.
 					newLife(i,j);
 					newActive[i][j] = true;
 					newAlive[i][j] = true;
 					drawRect(i, j);
-				} else if ((neighbors[i][j] > 6) & alive[i][j]) {
-					if (onLand(i, j)) {
+				} else if ((neighbors[i][j] > 5) && alive[i][j]) {
+                  //Resource Management
+					if ((onLand(i, j) && neighbors[i][j] > 6) || (onLand(i,j) && inSeason(i,j))) {
 						newActive[i][j] = true;
-						newAlive[i][j] = true;
-						drawRect(i, j);	
+						newAlive[i][j] = true;	
 					}
 				} else if (neighbors[i][j] == 0){
 					newActive[i][j] = false;
@@ -211,12 +228,18 @@ function generation() {
 		newActive[k] = blankArray[k].slice();
 		newAlive[k] = blankArray[k].slice();
 	}
+	delete newActive;
+	delete newAlive;
 	fullCheck();
 }
 
 function onLand(i, j) {
 	//There are 4 numbers in the array per pixel
-	return img.pixels[((width * j + i) * scalar * 4)] != 103;
+	return img.pixels[((cols * j * scalar + i)) * scalar * 4 + 3] < 200;
+}
+
+function inSeason(i, j) {
+ return abs(j - sun) < (rows / 6); 
 }
 
 function drawRect(i, j) {
@@ -374,6 +397,10 @@ function neighborCheck(i, j) {
 	} else {
 		rulers[i][j] = 0;
 	}
+	delete ruler;
+	delete max;
+	delete maxIndex;
+	delete maxCoun;
 	return false;
 }
 
