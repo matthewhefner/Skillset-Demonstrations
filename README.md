@@ -3,8 +3,6 @@ Skills Documentation
 
 This repository contains brief examples of my work in various fields of study over the course of my education at Appalachian State University. Some examples were created for specific courses, while others were made for fun or extracurricular experimentation.
 
-A copy of my resume is also included.
-
 Feel free to check out [my website](http://www.matthefner.com).  I wrote and maintain the HTML, CSS, JavaScript and PHP behind the site as a personal project.
 
 Cartography Portfolio
